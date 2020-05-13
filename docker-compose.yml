@@ -7,6 +7,8 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: example
         container_name: "mysqldb"
+        volumes:
+           - db-data:/var/lib/mysql
         ports:
            - '3306:3306'
     adminer:
@@ -20,7 +22,12 @@ services:
     web:
         image: muraric/imathas:1.1
         container_name: "webapp"
+        volumes:
+            - web-data:/var/www/html
         ports:
             - '80:80'
         depends_on:
             - mysqldb
+volumes:
+    db-data:
+    web-data:
