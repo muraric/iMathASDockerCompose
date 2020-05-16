@@ -21,6 +21,7 @@ services:
             - mysqldb   
     web:
         image: muraric/imathas:1.1
+        restart: always
         container_name: "webapp"
         volumes:
             - web-data:/var/www/html
